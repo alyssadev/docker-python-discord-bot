@@ -5,3 +5,5 @@ services:
     image: ghcr.io/alyssadev/python-discord-bot:latest
     environment:
       - BOT_TOKEN=token
+    volumes:
+      - .:/usr/src/app
