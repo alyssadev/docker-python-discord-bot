@@ -1,5 +1,8 @@
-FROM python:3.12.1-slim-bullseye
+FROM alpine
 WORKDIR /usr/src/app
 COPY . .
-RUN apt-get update && apt-get install -y gcc && pip install --no-cache-dir -r requirements.txt
-CMD [ "python", "./bot.py" ]
+RUN apk add --no-cache gcc python3 python3-dev py3-pip py3-requests py3-beautifulsoup4 && \
+    python3 -m venv env && \
+    . env/bin/activate && \
+    pip install --no-cache-dir discord-py-interactions
+CMD [ "env/bin/python", "./bot.py" ]
