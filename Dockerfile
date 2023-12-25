@@ -1,8 +1,7 @@
-FROM alpine
+FROM alpine as builder
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
 RUN apk add --no-cache gcc python3 python3-dev py3-pip py3-requests py3-beautifulsoup4 && \
-    python3 -m venv /usr/src/env && \
-    . /usr/src/env/bin/activate && \
-    pip install --no-cache-dir discord-py-interactions
-CMD [ "/usr/src/env/bin/python", "/usr/src/app/bot.py" ]
+    pip install --no-cache-dir --break-system-packages discord-py-interactions && \ 
+    apk del gcc python3-dev py3-pip
+CMD [ "python", "/usr/src/app/bot.py" ]
