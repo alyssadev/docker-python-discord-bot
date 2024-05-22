@@ -8,6 +8,6 @@ RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositori
     wget https://github.com/savonet/liquidsoap/releases/download/v2.2.3/liquidsoap-x86_64-2.2.3-r0.apk && \
     apk add --allow-untrusted liquidsoap-x86_64-2.2.3-r0.apk && \
     rm liquidsoap-x86_64-2.2.3-r0.apk && \
-    pip install --no-cache-dir --break-system-packages discord-py-interactions[voice] flask && \ 
+    pip install --no-cache-dir --break-system-packages discord-py-interactions[voice] flask discord.py && \ 
     apk del gcc python3-dev py3-pip libffi-dev wget
 CMD [ "python", "/usr/src/app/bot.py" ]
